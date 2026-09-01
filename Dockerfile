@@ -1,5 +1,5 @@
 # We need JDK as some of the lessons needs to be able to compile Java code
-FROM docker.io/eclipse-temurin:25-jdk-noble
+FROM docker.io/eclipse-temurin:25-jdk-noble@sha256:534968c051301957beae735e7ba1db54d99ddecf08746d3b9d4f318cc132dbc3
 
 LABEL name="WebGoat: A deliberately insecure Web Application"
 LABEL maintainer="WebGoat team"
