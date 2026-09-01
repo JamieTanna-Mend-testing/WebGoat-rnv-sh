@@ -1,5 +1,5 @@
 # Builder stage to download OWASP ZAP once per version
-FROM alpine:3.22 AS zap
+FROM alpine:3.22@sha256:14358309a308569c32bdc37e2e0e9694be33a9d99e68afb0f5ff33cc1f695dce AS zap
 ARG ZAP_VERSION=2.16.1
 RUN apk add --no-cache curl tar \
   && set -eux; \
@@ -9,7 +9,7 @@ RUN apk add --no-cache curl tar \
      rm -f /tmp/zap.tgz
 
 # Builder stage to fetch a JRE suited for the target architecture
-FROM alpine:3.22 AS jre
+FROM alpine:3.22@sha256:14358309a308569c32bdc37e2e0e9694be33a9d99e68afb0f5ff33cc1f695dce AS jre
 ARG JAVA_MAJOR=23
 ARG JAVA_FULL=23.0.1+11
 ARG TARGETARCH
@@ -28,7 +28,7 @@ RUN apk add --no-cache curl tar \
      rm -f /tmp/java.tgz
 
 # Final runtime image
-FROM lscr.io/linuxserver/webtop:ubuntu-xfce
+FROM lscr.io/linuxserver/webtop:ubuntu-xfce@sha256:1bd141d5d7aaf3e98e47b7d9665f50657d1628617b4ef47bc3bbd43d726fd77e
 LABEL name="WebGoat: A deliberately insecure Web Application"
 LABEL maintainer="WebGoat team"
 
